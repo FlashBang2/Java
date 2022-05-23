@@ -167,6 +167,9 @@ public class KeyboardGame implements KeyListener
             case "Enemy":
                 heroDecorator = new Damage(hero,myFrame);
                 heroDecorator.Change(element.GetValue());
+                hero.ChangeMaxHealth(hero.GetMaxHealth()+hero.GetButcherKnife());
+                heroDecorator = new Health(hero);
+                heroDecorator.Change(hero.GetButcherKnife());
                 hero.setLocation(hero.getX()+X, hero.getY());
                 break;
         }
@@ -239,12 +242,17 @@ public class KeyboardGame implements KeyListener
         int index=cards.indexOf(element);
         Foundation Replacement=((Enemy)element).PlaceLoot(element);
         Replacement.UpdateValue(myFrame.GetScalingItems());
+        if (Replacement.getName().equals("Armor"))
+            Replacement.UpdateValue(hero.GetCopyRight());
         Replacement.BoxSpecial(hero.GetLootBoxes());
         cards.set(index,Replacement);
         myFrame.add(cards.get(index));
         element.setVisible(false);
         heroDecorator=new Damage(hero,myFrame);
         heroDecorator.Change(element.GetValue());
+        hero.ChangeMaxHealth(hero.GetMaxHealth()+hero.GetButcherKnife());
+        heroDecorator = new Health(hero);
+        heroDecorator.Change(hero.GetButcherKnife());
     }
 
     @Override

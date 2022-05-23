@@ -19,8 +19,8 @@ public class Menu extends JFrame
         setLayout(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         getContentPane().setBackground(Color.BLACK);
-        Start.setBounds(200,900,250,50);
-        Exit.setBounds(1400,900,250,50);
+        Start.setBounds(700,900,250,50);
+        Exit.setBounds(975,900,250,50);
         Title.setBounds(550,0,800,600);
         Start.setName("Start");
         Exit.setName("Exit");

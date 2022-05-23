@@ -305,6 +305,7 @@ public class Game extends JFrame
         {
             Foundation card=new Armor();
             card.UpdateValue(ScalingItems);
+            card.UpdateValue(Hero.GetCopyRight());
             return card;
         }
         else if (IsBetween(value,44,71))
@@ -335,6 +336,7 @@ public class Game extends JFrame
         {
             Foundation card=new Armor();
             card.UpdateValue(ScalingItems);
+            card.UpdateValue(Hero.GetCopyRight());
             return card;
         }
         else if (IsBetween(value,48,73))
@@ -365,6 +367,7 @@ public class Game extends JFrame
         {
             Foundation card=new Armor();
             card.UpdateValue(ScalingItems);
+            card.UpdateValue(Hero.GetCopyRight());
             return card;
         }
         else if (IsBetween(value,56,80))
@@ -395,6 +398,7 @@ public class Game extends JFrame
         {
             Foundation card=new Armor();
             card.UpdateValue(ScalingItems);
+            card.UpdateValue(Hero.GetCopyRight());
             return card;
         }
         else if (IsBetween(value,66,80))
@@ -577,13 +581,14 @@ public class Game extends JFrame
         Hero.ChangeShield();
     }
 
-    public void ReferenceToDescription (JButton Interacted)
+    public void IncrementButcherKnife()
     {
-        items.DescriptionOfItem(Interacted);
+        Hero.ChangeButcherKnife();
     }
 
-    public void RefrenceToHideDescription()
+    public void IncrementCopyRights()
     {
-        items.HideDescription();
+        Hero.ChangeCopyRights();
     }
+
 }

@@ -1,5 +1,6 @@
 package Handlers;
 
+import Cards.Items.Blueprint;
 import Threads.Dispose;
 import Windows.Game;
 import Windows.Menu;
@@ -53,6 +54,14 @@ public class MouseScreens implements MouseListener
                 myFrame.LightUp();
                 myFrame.IncrementShieldCount();
                 break;
+            case "ButcherKnife":
+                myFrame.LightUp();
+                myFrame.IncrementButcherKnife();
+                break;
+            case "CopyRight":
+                myFrame.LightUp();
+                myFrame.IncrementCopyRights();
+                break;
             case "PandorasBox":
                 break;
         }
@@ -72,18 +81,17 @@ public class MouseScreens implements MouseListener
     public void mouseEntered(MouseEvent Entered)
     {
         JButton Interacted=(JButton) Entered.getSource();
-        if (!Interacted.getName().equals("Reroll"))
-            myFrame.ReferenceToDescription(Interacted);
         Interacted.setBackground(Color.GRAY);
-
+        if (!Interacted.getName().equals("Reroll") && !Interacted.getName().equals("Menu") && !Interacted.getName().equals("Respawn"))
+            ((Blueprint)Interacted).RevealDescription();
     }
 
     @Override
     public void mouseExited(MouseEvent Exited)
     {
         JButton Interacted=(JButton) Exited.getSource();
-        if (!Interacted.getName().equals("Reroll"))
-            myFrame.RefrenceToHideDescription();
         Interacted.setBackground(Color.BLACK);
+        if (!Interacted.getName().equals("Reroll") && !Interacted.getName().equals("Menu") && !Interacted.getName().equals("Respawn"))
+            ((Blueprint)Interacted).HideDescription();
     }
 }

@@ -22,6 +22,8 @@ public class Items extends JPanel
     Random                random=new Random();
     MouseScreens          mouseScreens;
     final int             CardSpacing=225,                WidthCard=200,          HeightCard=300;
+    boolean               Blocked=false;
+    boolean[]             ItemOptions=new boolean[6];
 
     public Items (Game MyFrame,int value)
     {
@@ -58,30 +60,107 @@ public class Items extends JPanel
 
     public void RandomizeCards()
     {
+        for (boolean element:ItemOptions)
+        {
+            element=false;
+        }
         for (int i=0;i<3;i++)
         {
-            int value=random.nextInt(4)+1;
+            int value=random.nextInt(6)+1;
+            Blocked=false;
             switch(value)
             {
                 case 1:
-                    card = new LifePotion();
+                    if (!ItemOptions[0])
+                    {
+                        ItemOptions[0]=true;
+                        card = new LifePotion();
+                    }
+                    else
+                    {
+                        i--;
+                        Blocked=true;
+                    }
                     break;
                 case 2:
-                    card = new MidasPouch();
+                    if (!ItemOptions[1])
+                    {
+                        ItemOptions[1]=true;
+                        card = new MidasPouch();
+                    }
+                    else
+                    {
+                        i--;
+                        Blocked=true;
+                    }
                     break;
                 case 3:
-                    card = new LootBox();
+                    if (!ItemOptions[2])
+                    {
+                        ItemOptions[2]=true;
+                        card = new LootBox();
+                    }
+                    else
+                    {
+                        i--;
+                        Blocked=true;
+                    }
                     break;
                 case 4:
-                    card = new Shield();
+                    if (!ItemOptions[3])
+                    {
+                        ItemOptions[3]=true;
+                        card = new Shield();
+                    }
+                    else
+                    {
+                        i--;
+                        Blocked=true;
+                    }
+                    break;
+                case 5:
+                    if (!ItemOptions[4])
+                    {
+                        ItemOptions[4]=true;
+                        card = new ButcherKnife();
+                    }
+                    else
+                    {
+                        i--;
+                        Blocked=true;
+                    }
+                    break;
+                case 6:
+                    if (!ItemOptions[5])
+                    {
+                        ItemOptions[5]=true;
+                        card = new Copyright();
+                    }
+                    else
+                    {
+                        i--;
+                        Blocked=true;
+                    }
+                    break;
+                case 7:
+                    card = new InfinityStone();
+                    break;
+                case 8:
+                    card = new CharonsCoin();
+                    break;
+                case 9:
+                    card = new MidasTouch();
                     break;
             }
-            card.setBounds(i*CardSpacing,75,WidthCard,HeightCard);
-            card.setBackground(Color.BLACK);
-            card.addMouseListener(mouseScreens);
-            card.setBorder(BorderFactory.createEmptyBorder());
-            cards.add(card);
-            Screen.add(card,Integer.valueOf(0));
+            if (!Blocked)
+            {
+                card.setBounds(i*CardSpacing,75,WidthCard,HeightCard);
+                card.setBackground(Color.BLACK);
+                card.addMouseListener(mouseScreens);
+                card.setBorder(BorderFactory.createEmptyBorder());
+                cards.add(card);
+                Screen.add(card,Integer.valueOf(0));
+            }
         }
     }
 
@@ -91,30 +170,98 @@ public class Items extends JPanel
         {
             cards.get(i).setVisible(false);
         }
+        for (boolean element:ItemOptions)
+        {
+            element=false;
+        }
         for (int i=0;i<3;i++)
         {
-            int value=random.nextInt(4)+1;
+            int value=random.nextInt(6)+1;
+            Blocked=false;
             switch(value)
             {
                 case 1:
-                    card = new LifePotion();
+                    if (!ItemOptions[0])
+                    {
+                        ItemOptions[0] = true;
+                        card = new LifePotion();
+                    }
+                    else
+                    {
+                        i--;
+                        Blocked = true;
+                    }
                     break;
                 case 2:
-                    card = new MidasPouch();
+                    if (!ItemOptions[1])
+                    {
+                        ItemOptions[1] = true;
+                        card = new MidasPouch();
+                    }
+                    else
+                    {
+                        i--;
+                        Blocked = true;
+                    }
                     break;
                 case 3:
-                    card = new LootBox();
+                    if (!ItemOptions[2])
+                    {
+                        ItemOptions[2] = true;
+                        card = new LootBox();
+                    }
+                    else
+                    {
+                        i--;
+                        Blocked = true;
+                    }
                     break;
                 case 4:
-                    card = new Shield();
+                    if (!ItemOptions[3])
+                    {
+                        ItemOptions[3] = true;
+                        card = new Shield();
+                    }
+                    else
+                    {
+                        i--;
+                        Blocked = true;
+                    }
+                    break;
+                case 5:
+                    if (!ItemOptions[4])
+                    {
+                        ItemOptions[4] = true;
+                        card = new ButcherKnife();
+                    }
+                    else
+                    {
+                        i--;
+                        Blocked = true;
+                    }
+                    break;
+                case 6:
+                    if (!ItemOptions[5])
+                    {
+                        ItemOptions[5] = true;
+                        card = new Copyright();
+                    }
+                    else
+                    {
+                        i--;
+                        Blocked = true;
+                    }
                     break;
             }
-            card.setBounds(i*CardSpacing,75,WidthCard,HeightCard);
-            card.setBackground(Color.BLACK);
-            card.addMouseListener(mouseScreens);
-            card.setBorder(BorderFactory.createEmptyBorder());
-            cards.add(card);
-            Screen.add(card,Integer.valueOf(0));
+            if (!Blocked)
+            {
+                card.setBounds(i*CardSpacing,75,WidthCard,HeightCard);
+                card.setBackground(Color.BLACK);
+                card.addMouseListener(mouseScreens);
+                card.setBorder(BorderFactory.createEmptyBorder());
+                cards.add(card);
+                Screen.add(card,Integer.valueOf(0));
+            }
         }
     }
 
@@ -125,33 +272,4 @@ public class Items extends JPanel
         Screen.add(notEnoughGold,Integer.valueOf(1));
     }
 
-    public void DescriptionOfItem (JButton Interacted)
-    {
-        Description.setVisible(true);
-        switch (Interacted.getName())
-        {
-            case "LifePotion":
-                Description.setIcon(new ImageIcon("Assets/Descriptions/LifePotion.png"));
-                Screen.add(Description,Integer.valueOf(1));
-                break;
-            case "LootBox":
-                Description.setIcon(new ImageIcon("Assets/Descriptions/LootBox.png"));
-                Screen.add(Description,Integer.valueOf(1));
-                break;
-            case "Shield":
-                Description.setIcon(new ImageIcon("Assets/Descriptions/Shield.png"));
-                Screen.add(Description,Integer.valueOf(1));
-                break;
-            case "MidasPouch":
-                Description.setIcon(new ImageIcon("Assets/Descriptions/MidasPouch.png"));
-                Screen.add(Description,Integer.valueOf(1));
-                break;
-        }
-        Description.setBounds(Interacted.getX()+1,Interacted.getY(),200,300);
-    }
-
-    public void HideDescription()
-    {
-        Description.setVisible(false);
-    }
 }

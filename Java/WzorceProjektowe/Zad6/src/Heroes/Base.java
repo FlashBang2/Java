@@ -10,7 +10,8 @@ public abstract class Base extends JPanel
 {
     int     currenthealth,          maxhealth,  armor,
             gold,                   moveTaken=0,midasPouches=0,
-            Lootboxes=1,            Shield=0;
+            Lootboxes=1,            Shield=0,   ButcherKnife=0,
+            CopyRights=0;
     JLabel  Health=new JLabel(),    Armor=new JLabel();
 
     public Base ()
@@ -90,6 +91,26 @@ public abstract class Base extends JPanel
     public int GetShield ()
     {
         return Shield;
+    }
+
+    public int GetButcherKnife ()
+    {
+        return ButcherKnife;
+    }
+
+    public int GetCopyRight()
+    {
+        return CopyRights;
+    }
+
+    public void ChangeCopyRights()
+    {
+        CopyRights++;
+    }
+
+    public void ChangeButcherKnife ()
+    {
+        ButcherKnife++;
     }
 
     public void ChangeShield ()
