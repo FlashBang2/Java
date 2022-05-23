@@ -7,12 +7,12 @@ public class Template extends JPanel
 {
     Lock  lock;
 
-    public Template (boolean Lock)
+    public Template (boolean Lock,int i)
     {
         setLayout(null);
         if (!Lock)
         {
-            lock=new Lock();
+            lock=new Lock(i);
             lock.setBounds(0,0,300,600);
             add(lock);
         }

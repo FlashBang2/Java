@@ -28,7 +28,7 @@ public class MouseScreens implements MouseListener
             case "Respawn":
                 Dispose=new Dispose(myFrame);
                 Dispose.start();
-                new Game(myFrame.GetHeroIndex());
+                new Game(myFrame.GetHeroIndex(),false);
                 break;
             case "Menu":
                 Dispose=new Dispose(myFrame);
@@ -65,6 +65,7 @@ public class MouseScreens implements MouseListener
             case "PandorasBox":
                 break;
         }
+        myFrame.CreateCollectedItemIcon(Interacted.getName());
     }
 
     @Override

@@ -8,9 +8,28 @@ import java.io.IOException;
 
 public class Lock extends JLabel
 {
-    public Lock ()
-    {
+    JLabel UnlockRequirement=new JLabel();
 
+    public Lock (int count)
+    {
+        switch (count)
+        {
+            case 1:
+                UnlockRequirement.setText("To Unlock DarkKnight win Game as Warrior");
+                UnlockRequirement.setBounds(0,-50,300,600);
+                break;
+            case 2:
+                UnlockRequirement.setText("To Unlock Medusa win Game as DarkKnight");
+                UnlockRequirement.setBounds(0,-50,300,600);
+                break;
+            case 3:
+                UnlockRequirement.setText("To Unlock Mage win Game as Medusa");
+                UnlockRequirement.setBounds(15,-50,300,600);
+                break;
+        }
+        UnlockRequirement.setFont(new Font("Arial",Font.PLAIN,15));
+        UnlockRequirement.setForeground(Color.WHITE);
+        add(UnlockRequirement);
     }
 
     @Override

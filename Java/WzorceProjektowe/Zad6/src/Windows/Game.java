@@ -7,6 +7,7 @@ import Heroes.Decorators.Buy;
 import Heroes.Decorators.HeroDecorator;
 import Heroes.Decorators.LifePotion;
 import Screens.*;
+import UIMessages.FirstTimeMessage;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class Game extends JFrame
     ArrayList<Foundation>   cards=new ArrayList<>();
     int                     i=0,                                        HeroX=875,                               HeroY=675,
                             HeroIndex,                                  ZoneIndex=1,                             ScalingEnemy=0,
-                            ScalingItems=0,                             Value=0;
+                            ScalingItems=0,                             Value=0,                                 CollectedItems=0;
     final int               CardWidth=200,                              CardHeight=300,                          LeftSide=650,
                             RightSide=1100,                             Middle=875;
     boolean                 HasWorked=false,                            AfterBossSquare=false;
@@ -51,12 +52,14 @@ public class Game extends JFrame
         }
     }
 
-    public Game (int index)
+    public Game (int index,boolean FirstTime)
     {
         setUndecorated(true);
         setLayout(null);
         setExtendedState(MAXIMIZED_BOTH);
         getContentPane().setBackground(Color.BLACK);
+        if (FirstTime)
+            FirstTimeMessage();
         HeroIndex=index;
         ChosenHero(index);
         Screen.setBounds(0,0,1920,1080);
@@ -591,4 +594,44 @@ public class Game extends JFrame
         Hero.ChangeCopyRights();
     }
 
+    public void CreateCollectedItemIcon(String Class)
+    {
+        switch (CollectedItems)
+        {
+            case 0:
+                CollectedItems++;
+                JLabel item=new JLabel();
+                item.setForeground(Color.WHITE);
+                item.setFont(new Font("Arial",Font.PLAIN,40));
+                item.setBounds(Items.getX()+125,Items.getY()-5,64,64);
+                item.setIcon(new ImageIcon("Assets/Cards/Items/"+Class+".png"));
+                Screen.add(item,Integer.valueOf(0));
+                break;
+            case 1:
+                CollectedItems++;
+                JLabel item2=new JLabel();
+                item2.setForeground(Color.WHITE);
+                item2.setFont(new Font("Arial",Font.PLAIN,40));
+                item2.setBounds(Items.getX()+165,Items.getY()-5,64,64);
+                item2.setIcon(new ImageIcon("Assets/Cards/Items/"+Class+".png"));
+                Screen.add(item2,Integer.valueOf(0));
+                break;
+            case 2:
+                CollectedItems++;
+                JLabel item3=new JLabel();
+                item3.setForeground(Color.WHITE);
+                item3.setFont(new Font("Arial",Font.PLAIN,40));
+                item3.setBounds(Items.getX()+205,Items.getY()-5,64,64);
+                item3.setIcon(new ImageIcon("Assets/Cards/Items/"+Class+".png"));
+                Screen.add(item3,Integer.valueOf(0));
+                break;
+        }
+    }
+
+    public void FirstTimeMessage ()
+    {
+        FirstTimeMessage firstTimeMessage=new FirstTimeMessage();
+        firstTimeMessage.setBounds(0,500,200,300);
+        Screen.add(firstTimeMessage,Integer.valueOf(0));
+    }
 }

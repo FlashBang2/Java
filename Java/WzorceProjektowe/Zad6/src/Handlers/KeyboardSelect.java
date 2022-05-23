@@ -102,25 +102,26 @@ public class KeyboardSelect implements KeyListener
                 {
                     Thread=new Dispose(myFrame);
                     Thread.start();
-                    new Game(index);
+                    new Game(index,true);
+
                 }
                 else if (index==1 && UnlockedDarkKnight)
                 {
                     Thread=new Dispose(myFrame);
                     Thread.start();
-                    new Game(index);
+                    new Game(index,false);
                 }
                 else if (index==2 && UnlockedMedusa)
                 {
                     Thread=new Dispose(myFrame);
                     Thread.start();
-                    new Game(index);
+                    new Game(index,false);
                 }
                 else if (index==3 && UnlockedMage)
                 {
                     Thread=new Dispose(myFrame);
                     Thread.start();
-                    new Game(index);
+                    new Game(index,false);
                 }
                 break;
             case KeyEvent.VK_ESCAPE:

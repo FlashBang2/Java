@@ -83,9 +83,9 @@ public class Select extends JFrame
         for(int i=0;i<4;i++)
         {
             if (i==0)
-                Option=new Template(true);
+                Option=new Template(true,0);
             else
-                Option=new Template(Levers[i-1]);
+                Option=new Template(Levers[i-1],i);
             Option.setBounds(FirstOptionX+325*i,FirstOptionY,300,600);
             Selektor.add(Option);
             add(Option);

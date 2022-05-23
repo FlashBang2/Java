@@ -24,9 +24,12 @@ public class NotEnoughGold extends JPanel implements ActionListener
     public void paint (Graphics g)
     {
         buffimage=null;
-        try {
+        try
+        {
             buffimage = ImageIO.read(new File("Assets/Screens/Notification.png"));
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
         super.paint(g);
